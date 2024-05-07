@@ -1,0 +1,17 @@
+[data-accordion-list] {
+	
+	dt {
+		cursor: pointer;
+	}
+
+	dt[data-open="true"] {}
+	
+	dd {
+		display: none;
+	}
+
+	dt[data-open="true"] + dd {
+		display: initial;
+	}
+
+}
