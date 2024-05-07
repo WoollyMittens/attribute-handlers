@@ -1,22 +1,6 @@
-// applies accordion functionality to definition lists
-class AccordionList {
-	constructor(element) {
-		// for all the title elements in the container
-		const elements = element.querySelectorAll("dt");
-		for (let element of elements) {
-			// handle clicks on the selected element
-			element.addEventListener("click", this.onToggle.bind(this, element));
-		}
-	}
+/*! Attribute Handlers v0.0.1 - (c) 2024 Maurice van Creij - MIT License - https://github.com/WoollyMittens */
 
-	onToggle(element, evt) {
-		// cancel the default reaction to the click
-		evt.preventDefault();
-		// toggle the state of the element
-		const isOpen = element.getAttribute("data-open") === "true";
-		element.setAttribute("data-open", !isOpen);
-	}
-}
+import { AccordionList } from "./accordion-list.js";
 
 // public handler class
 export class AttributeHandlers {
@@ -64,5 +48,5 @@ export class AttributeHandlers {
 	}
 }
 
-// init the main class (disable if importing)
-new AttributeHandlers();
+// expose the main class (disable if importing)
+window.AttributeHandlers = AttributeHandlers;
