@@ -12,7 +12,8 @@ export class AttributeHandlers {
 			"[data-accordion-list]": AccordionList,
 		};
 		// re-apply after async content changes
-		this.observer = new MutationObserver(this.check.bind(this)).observe(document.body, {
+		this.observer = new MutationObserver(this.check.bind(this));
+		this.observer.observe(document.body, {
 			attributes: false,
 			childList: true,
 			subtree: true,
@@ -22,7 +23,7 @@ export class AttributeHandlers {
 	}
 
 	// creates an instance of the handler if needed
-	instantiate(selector, handler, instances) {
+	init(selector, handler, instances) {
 		// select any elements associated with the handler
 		let elements = [...document.querySelectorAll(selector)];
 		for (let element of elements) {
@@ -43,7 +44,7 @@ export class AttributeHandlers {
 			// use the existing list of instances or create a new one
 			this.instances[selector] = this.instances[selector] || [];
 			// create an instance of this handler
-			this.instantiate(selector, this.handlers[selector], this.instances[selector]);
+			this.init(selector, this.handlers[selector], this.instances[selector]);
 		}
 	}
 }
