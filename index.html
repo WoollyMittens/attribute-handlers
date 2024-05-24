@@ -5,6 +5,13 @@
 		<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width"/>
 		<style>
 			body { font-family: sans-serif; padding: 2rem; background-color: #fff; color: #333; }
+		</style>
+		<script src="attribute-handlers.js" type="module"></script>
+	</head>
+	<body>
+
+		<h2>Accordion List</h2>
+		<style>
 			[data-accordion-list] {
 				margin:0 0 2rem; padding:0; border-bottom: solid 1px #333;
 				dt { display: flex; gap: 1rem; justify-content: space-between; align-items: center; cursor:pointer; padding: 0.5rem 0; border-top: solid 1px #000; font-weight: bold; }
@@ -14,10 +21,6 @@
 				dt[data-open="true"] + dd { display: block; }
 			}
 		</style>
-		<script src="attribute-handlers.js" type="module"></script>
-	</head>
-	<body>
-
 		<dl data-accordion-list>
 			<dt>Lorem ipsum dolor sit amet</dt>
 			<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
@@ -26,6 +29,86 @@
 			<dt>At vero eos et accusamus</dt>
 			<dd>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</dd>
 		</dl>
+
+		<h2>Layout Switch</h2>
+		<style>
+			[data-layout-switch] {
+				border: solid 1px #333; padding: 1rem; margin: 0 0 2rem;
+				input[type="radio"] { position: absolute; opacity: 0; }
+				svg { opacity: 0.5; }
+				input:checked + label svg { opacity: 1; }
+			}
+			.example-grid { 
+				border: solid 1px #333; margin: 0 0 2rem; padding: 1rem 2rem; list-style-type: none; display: grid; gap: 1rem 2rem; grid-template-columns: 1fr 1fr 1fr;
+				[data-layout="list"] & { grid-template-columns: 1fr; list-style-type: initial; gap: 0 2rem; }
+			}
+		</style>
+		<fieldset data-layout-switch>
+			<input type="radio" id="layout-switch-grid" name="collection-layout" value="grid" checked>
+			<label for="layout-switch-grid">
+				<svg title="Grid" width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="1" y="0.5" width="49" height="49" fill="white" fill-opacity="0.76"/>
+					<rect x="1" y="0.5" width="49" height="49" stroke="#CBCBCB"/>
+					<rect x="10.5" y="10" width="13" height="13" fill="#838383"/>
+					<rect x="27.5" y="10" width="13" height="13" fill="#838383"/>
+					<rect x="10.5" y="27" width="13" height="13" fill="#838383"/>
+					<rect x="27.5" y="27" width="13" height="13" fill="#838383"/>
+				</svg>          
+			</label>
+			<input type="radio" id="layout-switch-list" name="collection-layout" value="list">
+			<label for="layout-switch-list">
+				<svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="1" y="0.5" width="49" height="49" fill="white" fill-opacity="0.76"/>
+					<rect x="1" y="0.5" width="49" height="49" stroke="#CBCBCB"/>
+					<rect x="10.5" y="15" width="2" height="2" fill="#838383"/>
+					<rect x="16.5" y="15" width="24" height="2" fill="#838383"/>
+					<rect x="10.5" y="21" width="2" height="2" fill="#838383"/>
+					<rect x="16.5" y="21" width="24" height="2" fill="#838383"/>
+					<rect x="10.5" y="27" width="2" height="2" fill="#838383"/>
+					<rect x="16.5" y="27" width="24" height="2" fill="#838383"/>
+					<rect x="10.5" y="33" width="2" height="2" fill="#838383"/>
+					<rect x="16.5" y="33" width="24" height="2" fill="#838383"/>
+				</svg>
+			</label>
+		</fieldset>
+		<ul class="example-grid">
+			<li>
+				<h2>Lorem ipsum dolor sit amet</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</li>
+			<li>
+				<h2>Sed ut perspiciatis unde omnis</h2>
+				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</pp>
+			</li>
+			<li>
+				<h2>At vero eos et accusamus</h2>
+				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+			</li>
+			<li>
+				<h2>At vero eos et accusamus</h2>
+				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+			</li>
+			<li>
+				<h2>Lorem ipsum dolor sit amet</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</li>
+			<li>
+				<h2>Sed ut perspiciatis unde omnis</h2>
+				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</pp>
+			</li>
+			<li>
+				<h2>Sed ut perspiciatis unde omnis</h2>
+				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</pp>
+			</li>
+			<li>
+				<h2>At vero eos et accusamus</h2>
+				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+			</li>
+			<li>
+				<h2>Lorem ipsum dolor sit amet</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</li>
+		</ul>
 		
 		<script>
 			addEventListener("DOMContentLoaded", () => {

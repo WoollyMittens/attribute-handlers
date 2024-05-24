@@ -2,13 +2,13 @@
 
 Assigns handler classes to specific CSS selectors.
 
-NOTE: This is a very limited prototype for now.
-
 ## Example
 
 https://woollymittens.github.io/attribute-handlers/
 
 ## Instructions
+
+Start the handler class to watch for changes to the document:
 
 ``` javascript
 import { AttributeHandlers } from "./attribute-handlers.js";
@@ -16,7 +16,7 @@ import { AttributeHandlers } from "./attribute-handlers.js";
 const attributeHandlers = new AttributeHandlers();
 ```
 
-### Accordion List
+The handlers will be applied to the associated html attributes as soon as they appear on the page:
 
 ``` html
 <dl data-accordion-list>
