@@ -1,6 +1,7 @@
 /*! Attribute Handlers v0.0.1 - (c) 2024 Maurice van Creij - MIT License - https://github.com/WoollyMittens */
 
 import { AccordionList } from "./accordion-list.js";
+import { ImageZoom } from "./image-zoom.js";
 import { LayoutSwitch } from "./layout-switch.js";
 
 // public handler class
@@ -11,6 +12,7 @@ export class AttributeHandlers {
 		// a reference of supported handler classes
 		this.handlers = {
 			"[data-accordion-list]": AccordionList,
+			"[data-image-zoom]": ImageZoom,
 			"[data-layout-switch]": LayoutSwitch,
 		};
 		// re-apply after async content changes
