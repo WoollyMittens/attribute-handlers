@@ -14,14 +14,14 @@ export class ImageZoom {
 			element.appendChild(this.touch);
 		}
 		// add the mouse interaction
-		this.touch.addEventListener("mouseover", this.start.bind(this, false));
-		this.touch.addEventListener("mousemove", this.move.bind(this));
-		this.touch.addEventListener("mouseout", this.reset.bind(this));
+		this.touch.addEventListener("mouseover", this.start.bind(this, false), { passive: false });
+		this.touch.addEventListener("mousemove", this.move.bind(this), { passive: true });
+		this.touch.addEventListener("mouseout", this.reset.bind(this), { passive: true });
 		// add the touch interaction
-		this.touch.addEventListener("touchstart", this.start.bind(this, true));
-		this.touch.addEventListener("touchmove", this.move.bind(this));
-		this.touch.addEventListener("touchcancel", this.reset.bind(this));
-		this.touch.addEventListener("touchend", this.reset.bind(this));
+		this.touch.addEventListener("touchstart", this.start.bind(this, true), { passive: false });
+		this.touch.addEventListener("touchmove", this.move.bind(this), { passive: true });
+		this.touch.addEventListener("touchcancel", this.reset.bind(this), { passive: true });
+		this.touch.addEventListener("touchend", this.reset.bind(this), { passive: true });
 	}
 
 	get active() {

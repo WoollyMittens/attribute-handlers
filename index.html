@@ -4,7 +4,8 @@
 		<title>Attribute Handlers</title>
 		<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width"/>
 		<style>
-			body { font-family: sans-serif; padding: 2rem; background-color: #fff; color: #333; }
+			body { font-family: sans-serif; padding: 1rem; background-color: #fff; color: #333; }
+			@media(min-width:768px) { body { padding: 2rem; } }
 		</style>
 		<script src="attribute-handlers.js" type="module"></script>
 	</head>
@@ -17,10 +18,10 @@
 				border: solid 1px #333; width: 720px; height: auto; max-width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative; margin: 0 0 2rem; padding: 0;
 				>img { position: absolute; left: 50%; top: 50%; transform: translate3d(-50%, -50%, 0); width:100%; height:100%; object-fit:contain; }
 				&:hover>img, &:active>img { width:auto; height:auto; }
-				.touch { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; }
+				.touch { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer; }
 			}
 			[data-image-zoom="active"] {
-				>img { max-width: initial; }
+				>img { width:auto; height:auto; }
 			}
 		</style>
 		<figure data-image-zoom>
