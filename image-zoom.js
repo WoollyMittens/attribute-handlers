@@ -42,8 +42,8 @@ export class ImageZoom {
 			this.imageHeight = this.image.offsetHeight;
 			this.touchWidth = this.touch.offsetWidth;
 			this.touchHeight = this.touch.offsetHeight;
-			this.translateWidth = this.touchWidth / this.imageWidth;
-			this.translateHeight = this.touchHeight / this.imageHeight;
+			this.translateWidth = (this.imageWidth > this.touchWidth) ? this.touchWidth / this.imageWidth : 1;
+			this.translateHeight = (this.imageHeight > this.touchHeight) ? this.touchHeight / this.imageHeight : 1;
 			this.translateWidthMin = ((1 - this.translateWidth) / 2) * 100;
 			this.translateHeightMin = ((1 - this.translateHeight) / 2) * 100;
 			this.translateWidthMax = -this.translateWidthMin;
